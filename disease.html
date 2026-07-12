@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Disease Detection - FarmValu AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>🌱 Crop Disease Detection</h1>
+    <p>Upload a crop image for AI analysis</p>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Upload Crop Image</h2>
+
+        <input type="file" id="imageUpload" accept="image/*">
+
+        <br><br>
+
+        <button onclick="detectDisease()">
+            Detect Disease
+        </button>
+
+        <div id="result" style="margin-top:25px;">
+            <h3>Disease: Healthy Plant</h3>
+            <p>Confidence: 98%</p>
+            <p>Treatment: No disease detected.</p>
+            <p>Recommended Fertilizer: NPK 19-19-19</p>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
