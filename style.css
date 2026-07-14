@@ -1,1 +1,103 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
 
+body{
+    overflow:hidden;
+    background:#000;
+}
+
+/* Splash Screen */
+.splash{
+    width:100%;
+    height:100vh;
+    background:url("farm.jpg") no-repeat center center;
+    background-size:cover;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+}
+
+.overlay{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.35);
+}
+
+.content{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    color:#fff;
+    width:90%;
+}
+
+.content h1{
+    font-size:42px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.content h2{
+    color:#7CFC00;
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.location{
+    font-size:20px;
+    margin-bottom:40px;
+}
+
+.loading-box{
+    position:absolute;
+    bottom:40px;
+    left:50%;
+    transform:translateX(-50%);
+    width:85%;
+    background:rgba(0,70,20,.85);
+    padding:20px;
+    border-radius:20px;
+}
+
+.loading-text{
+    color:#fff;
+    font-size:20px;
+    margin-bottom:15px;
+}
+
+.progress{
+    width:100%;
+    height:12px;
+    background:#4e704e;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    width:0%;
+    height:100%;
+    background:#66ff33;
+    animation:load 2s linear forwards;
+}
+
+.wait{
+    margin-top:10px;
+    color:#fff;
+    text-align:right;
+    font-size:18px;
+}
+
+@keyframes load{
+    from{
+        width:0%;
+    }
+    to{
+        width:100%;
+    }
+}
