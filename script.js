@@ -1,23 +1,23 @@
-function startApp() {
-    alert("Welcome to FarmValu AI!\n\nYour smart farming assistant is ready.");
-}
+// Splash Screen - Show for 2 seconds
+window.onload = function () {
 
-function changeLanguage(lang) {
-    if (lang === "kn") {
-        alert("ಕನ್ನಡ ಭಾಷೆ ಶೀಘ್ರದಲ್ಲೇ ಲಭ್ಯವಾಗಲಿದೆ.");
-    } else {
-        alert("English language selected.");
-    }
-}
+    const loadingBar = document.getElementById("loading-bar");
 
-function uploadCropImage() {
-    alert("Crop image upload feature will be connected to AI disease detection soon.");
-}
+    let width = 0;
 
-function recommendFertilizer() {
-    alert("AI fertilizer recommendation feature coming soon.");
-}
+    const interval = setInterval(function () {
+        width += 5;
+        if (loadingBar) {
+            loadingBar.style.width = width + "%";
+        }
 
-function openChatbot() {
-    alert("FarmValu AI Chatbot will be available soon.");
-}
+        if (width >= 100) {
+            clearInterval(interval);
+
+            setTimeout(function () {
+                window.location.href = "market.html";
+            }, 300);
+        }
+    }, 100);
+
+};
