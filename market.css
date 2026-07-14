@@ -1,1 +1,191 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
 
+body{
+background:#eef8ee;
+color:#222;
+}
+
+/* Header */
+
+.header{
+background:linear-gradient(135deg,#1b5e20,#43a047);
+color:white;
+padding:30px 20px;
+text-align:center;
+border-bottom-left-radius:25px;
+border-bottom-right-radius:25px;
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+.header h1{
+font-size:34px;
+margin-bottom:8px;
+}
+
+.header p{
+font-size:18px;
+opacity:.9;
+}
+
+/* Welcome */
+
+.welcome{
+margin:20px;
+background:white;
+padding:20px;
+border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.welcome h2{
+color:#2e7d32;
+margin-bottom:8px;
+}
+
+.welcome p{
+color:#555;
+}
+
+/* Search */
+
+.search{
+padding:0 20px 20px;
+}
+
+.search input{
+width:100%;
+padding:15px;
+border:none;
+border-radius:15px;
+font-size:16px;
+outline:none;
+box-shadow:0 4px 12px rgba(0,0,0,.1);
+}
+
+/* Categories */
+
+.categories{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:18px;
+padding:20px;
+}
+
+.card{
+background:white;
+border-radius:20px;
+padding:25px 15px;
+text-align:center;
+font-size:45px;
+cursor:pointer;
+transition:.3s;
+box-shadow:0 8px 18px rgba(0,0,0,.08);
+}
+
+.card:hover{
+transform:translateY(-6px);
+background:#e8f5e9;
+}
+
+.card h3{
+margin-top:12px;
+font-size:18px;
+color:#2e7d32;
+}
+
+/* AI Prediction */
+
+.prediction{
+padding:20px;
+}
+
+.prediction h2{
+margin-bottom:15px;
+color:#1b5e20;
+}
+
+.prediction-box{
+background:linear-gradient(135deg,#43a047,#66bb6a);
+color:white;
+padding:20px;
+border-radius:20px;
+box-shadow:0 8px 18px rgba(0,0,0,.2);
+}
+
+.prediction-box h3{
+font-size:24px;
+margin-bottom:10px;
+}
+
+.prediction-box p{
+margin:6px 0;
+font-size:17px;
+}
+
+/* Weather */
+
+.weather{
+padding:20px;
+}
+
+.weather h2{
+margin-bottom:15px;
+color:#1b5e20;
+}
+
+.weather-box{
+background:white;
+padding:20px;
+border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+font-size:18px;
+line-height:2;
+}
+
+/* Banner Ad */
+
+.banner-ad{
+margin:20px;
+background:#fff8e1;
+border:2px dashed #ffb300;
+border-radius:15px;
+padding:18px;
+text-align:center;
+font-size:18px;
+font-weight:bold;
+color:#e65100;
+}
+
+/* Footer */
+
+footer{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:white;
+display:flex;
+justify-content:space-around;
+padding:12px;
+box-shadow:0 -3px 10px rgba(0,0,0,.15);
+}
+
+footer button{
+background:#2e7d32;
+color:white;
+border:none;
+padding:12px 18px;
+border-radius:12px;
+font-size:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+footer button:hover{
+background:#1b5e20;
+}
