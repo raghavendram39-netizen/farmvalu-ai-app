@@ -1,1 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FarmValu AI - Profile</title>
+
+<link rel="stylesheet" href="profile.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<header class="header">
+
+<h1>👤 Farmer Profile</h1>
+
+<p>Manage Your FarmValu AI Account</p>
+
+</header>
+
+<section class="profile-card">
+
+<img src="https://via.placeholder.com/120" class="avatar" alt="Farmer">
+
+<h2 id="farmerName">Farmer Name</h2>
+
+<p id="farmerLocation">📍 Karnataka, India</p>
+
+<button onclick="editProfile()">✏ Edit Profile</button>
+
+</section>
+
+<section class="details">
+
+<h2>🌾 Farm Details</h2>
+
+<div class="item">
+<span>👤 Name</span>
+<span id="name">Farmer Name</span>
+</div>
+
+<div class="item">
+<span>📞 Mobile</span>
+<span id="mobile">9876543210</span>
+</div>
+
+<div class="item">
+<span>📍 Village</span>
+<span id="village">Your Village</span>
+</div>
+
+<div class="item">
+<span>🌾 Main Crop</span>
+<span id="crop">Tomato</span>
+</div>
+
+<div class="item">
+<span>📏 Land Area</span>
+<span id="land">2 Acres</span>
+</div>
+
+</section>
+
+<section class="options">
+
+<h2>⚙ Settings</h2>
+
+<button onclick="changeLanguage()">🌐 Language</button>
+
+<button onclick="notifications()">🔔 Notifications</button>
+
+<button onclick="favorites()">❤️ Favourite Crops</button>
+
+<button onclick="support()">📞 Help & Support</button>
+
+<button onclick="about()">ℹ About App</button>
+
+<button onclick="logout()">🚪 Logout</button>
+
+</section>
+
+<footer>
+
+<button onclick="location.href='market.html'">
+🏠 Home
+</button>
+
+<button onclick="location.href='weather.html'">
+🌦 Weather
+</button>
+
+<button onclick="location.href='ai.html'">
+🤖 AI
+</button>
+
+</footer>
+
+<script src="profile.js"></script>
+
+</body>
+</html>
