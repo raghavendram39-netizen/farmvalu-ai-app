@@ -1,1 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>FarmValu AI - AI Assistant</title>
+
+<link rel="stylesheet" href="ai.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header class="header">
+
+<h1>🤖 FarmValu AI Assistant</h1>
+
+<p>Your Smart Farming Companion</p>
+
+</header>
+
+<section class="welcome">
+
+<h2>👋 Hello Farmer!</h2>
+
+<p>Ask anything about crops, fertilizers, weather, diseases, market prices and government schemes.</p>
+
+</section>
+
+<section class="chat-box">
+
+<div class="bot-message">
+🤖 Hello! How can I help you today?
+</div>
+
+<div class="user-input">
+
+<input
+type="text"
+id="question"
+placeholder="Ask your farming question...">
+
+<button onclick="sendQuestion()">
+Send
+</button>
+
+</div>
+
+</section>
+
+<section class="quick-actions">
+
+<h2>Quick Actions</h2>
+
+<div class="actions">
+
+<button onclick="fertilizer()">
+🌱 Fertilizer
+</button>
+
+<button onclick="cropDisease()">
+🍃 Disease
+</button>
+
+<button onclick="pricePrediction()">
+📈 Price Prediction
+</button>
+
+<button onclick="weatherAdvice()">
+🌦 Weather
+</button>
+
+<button onclick="govtSchemes()">
+🏛 Schemes
+</button>
+
+<button onclick="voiceAssistant()">
+🎤 Voice
+</button>
+
+</div>
+
+</section>
+
+<section class="languages">
+
+<h2>Language</h2>
+
+<button>🇬🇧 English</button>
+
+<button>🇮🇳 ಕನ್ನಡ</button>
+
+</section>
+
+<section class="video-ad">
+
+<h3>Sponsored Advertisement</h3>
+
+<video width="100%" controls muted>
+<source src="ads/ad1.mp4" type="video/mp4">
+Your browser does not support video.
+</video>
+
+</section>
+
+<footer>
+
+<button onclick="location.href='market.html'">
+🏠 Home
+</button>
+
+<button onclick="location.href='weather.html'">
+🌦 Weather
+</button>
+
+<button onclick="location.href='profile.html'">
+👤 Profile
+</button>
+
+</footer>
+
+<script src="ai.js"></script>
+
+</body>
+</html>
