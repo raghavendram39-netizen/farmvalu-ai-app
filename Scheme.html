@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmValu AI - Government Schemes</title>
+
+    <link rel="stylesheet" href="Scheme.Css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header class="header">
+
+    <h1>🏛 Government Schemes</h1>
+
+    <p>Government Benefits for Farmers</p>
+
+</header>
+
+<section class="search">
+
+    <input
+        type="text"
+        id="searchScheme"
+        placeholder="Search Government Scheme...">
+
+    <button onclick="searchScheme()">
+        🔍 Search
+    </button>
+
+</section>
+
+<section id="schemeContainer">
+
+    <div class="scheme-card">
+
+        <h2>🌾 PM-KISAN</h2>
+
+        <p>Income support of ₹6,000 per year for eligible farmer families.</p>
+
+        <button onclick="readMore('PM-KISAN')">
+            Read More
+        </button>
+
+    </div>
+
+    <div class="scheme-card">
+
+        <h2>💧 PMKSY</h2>
+
+        <p>Pradhan Mantri Krishi Sinchayee Yojana for irrigation development.</p>
+
+        <button onclick="readMore('PMKSY')">
+            Read More
+        </button>
+
+    </div>
+
+    <div class="scheme-card">
+
+        <h2>🌱 Soil Health Card</h2>
+
+        <p>Get soil testing reports and fertilizer recommendations.</p>
+
+        <button onclick="readMore('Soil Health Card')">
+            Read More
+        </button>
+
+    </div>
+
+    <div class="scheme-card">
+
+        <h2>🚜 Kisan Credit Card</h2>
+
+        <p>Easy agricultural loans with low interest rates.</p>
+
+        <button onclick="readMore('Kisan Credit Card')">
+            Read More
+        </button>
+
+    </div>
+
+    <div class="scheme-card">
+
+        <h2>🌿 Crop Insurance</h2>
+
+        <p>Financial protection against crop loss due to natural disasters.</p>
+
+        <button onclick="readMore('Crop Insurance')">
+            Read More
+        </button>
+
+    </div>
+
+    <div class="scheme-card">
+
+        <h2>🛒 e-NAM</h2>
+
+        <p>National Agriculture Market for online crop trading.</p>
+
+        <button onclick="readMore('National Agriculture Market (e-NAM)')">
+            Read More
+        </button>
+
+    </div>
+
+</section>
+
+<footer>
+
+    <button onclick="location.href='index.html'">
+        🏠 Home
+    </button>
+
+    <button onclick="location.href='market.html'">
+        💰 Market
+    </button>
+
+    <button onclick="location.href='weather.html'">
+        🌦 Weather
+    </button>
+
+    <button onclick="location.href='ai.html'">
+        🤖 AI
+    </button>
+
+    <button onclick="location.href='profile.html'">
+        👤 Profile
+    </button>
+
+</footer>
+
+<script src="Scheme.Js"></script>
+
+</body>
+
+</html>
