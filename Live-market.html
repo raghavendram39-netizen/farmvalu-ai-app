@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>FarmValu AI - Live Market Prices</title>
+
+<link rel="stylesheet"
+href="live-market.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+</head>
+
+<body>
+
+<header class="header">
+
+<h1>💰 Live Market Prices</h1>
+
+<p>Check today's crop prices</p>
+
+</header>
+
+<section class="search-box">
+
+<input
+type="text"
+id="cropSearch"
+placeholder="Search crop...">
+
+<button onclick="searchCrop()">
+
+🔍 Search
+
+</button>
+
+</section>
+
+<section id="marketContainer">
+
+<div class="market-card">
+
+<h2>🌾 Tomato</h2>
+
+<p>Price: ₹2500 / Quintal</p>
+
+<p>Market: Bengaluru</p>
+
+</div>
+
+<div class="market-card">
+
+<h2>🌽 Maize</h2>
+
+<p>Price: ₹2200 / Quintal</p>
+
+<p>Market: Mysuru</p>
+
+</div>
+
+<div class="market-card">
+
+<h2>🧅 Onion</h2>
+
+<p>Price: ₹1800 / Quintal</p>
+
+<p>Market: Hubballi</p>
+
+</div>
+
+</section>
+
+<footer>
+
+<button onclick="location.href='index.html'">
+🏠 Home
+</button>
+
+<button onclick="location.href='weather.html'">
+🌦 Weather
+</button>
+
+<button onclick="location.href='ai.html'">
+🤖 AI
+</button>
+
+<button onclick="location.href='profile.html'">
+👤 Profile
+</button>
+
+</footer>
+
+<script src="live-market.js"></script>
+
+</body>
+
+</html>
