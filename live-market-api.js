@@ -30,3 +30,15 @@ function displayLiveMarket(records) {
 }
 
 window.onload = loadLiveMarket;
+function searchCrop() {
+    const input = document.getElementById("cropSearch").value.toLowerCase();
+    const cards = document.querySelectorAll(".market-card");
+
+    cards.forEach(card => {
+        if (card.innerText.toLowerCase().includes(input)) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
