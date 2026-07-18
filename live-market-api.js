@@ -1,12 +1,21 @@
-const API_URL = "https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=YOUR_API_KEY&format=json&limit=100";
+const API_URL = 579b464db66ec23bdd0000015f77b57d96134b6762464b38c1b86fda
 
 async function loadLiveMarket() {
     try {
         const response = await fetch(API_URL);
+
+        if (!response.ok) {
+            throw new Error("Failed to load market data");
+        }
+
         const data = await response.json();
         displayLiveMarket(data.records);
+
     } catch (error) {
-        console.error("Error loading market data:", error);
+        console.error("Error:", error);
+
+        document.getElementById("marketContainer").innerHTML =
+            "<p>Unable to load live market data.</p>";
     }
 }
 
@@ -29,7 +38,6 @@ function displayLiveMarket(records) {
     });
 }
 
-window.onload = loadLiveMarket;
 function searchCrop() {
     const input = document.getElementById("cropSearch").value.toLowerCase();
     const cards = document.querySelectorAll(".market-card");
@@ -42,3 +50,5 @@ function searchCrop() {
         }
     });
 }
+
+window.onload = loadLiveMarket;
