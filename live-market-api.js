@@ -1,4 +1,4 @@
-const API_URL = 579b464db66ec23bdd0000015f77b57d96134b6762464b38c1b86fda
+const API_URL = "https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=579b464db66ec23bdd000001bc0e21c9ea32420542918cb35ef2d290&format=json&limit=100";
 
 async function loadLiveMarket() {
     try {
