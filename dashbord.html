@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FarmValu AI Dashboard</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f4f7f4;
+}
+
+header{
+    background:#2e7d32;
+    color:white;
+    padding:20px;
+    text-align:center;
+    font-size:28px;
+    font-weight:bold;
+}
+
+.container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:20px;
+    padding:25px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:25px;
+    text-align:center;
+    text-decoration:none;
+    color:#333;
+    box-shadow:0 5px 12px rgba(0,0,0,.15);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:scale(1.05);
+}
+
+.icon{
+    font-size:40px;
+}
+
+h3{
+    margin-top:12px;
+}
+
+.logout{
+    display:block;
+    width:220px;
+    margin:30px auto;
+    background:#d32f2f;
+    color:white;
+    text-align:center;
+    padding:15px;
+    border-radius:10px;
+    text-decoration:none;
+    font-size:18px;
+}
+</style>
+
+</head>
+<body>
+
+<header>🌾 FarmValu AI Dashboard</header>
+
+<div class="container">
+
+<a href="ai.html" class="card">
+<div class="icon">🤖</div>
+<h3>AI Assistant</h3>
+</a>
+
+<a href="weather.html" class="card">
+<div class="icon">🌦️</div>
+<h3>Weather</h3>
+</a>
+
+<a href="market.html" class="card">
+<div class="icon">📈</div>
+<h3>Market Prices</h3>
+</a>
+
+<a href="disease.html" class="card">
+<div class="icon">🌿</div>
+<h3>Disease Detection</h3>
+</a>
+
+<a href="scheme.html" class="card">
+<div class="icon">📢</div>
+<h3>Government Schemes</h3>
+</a>
+
+<a href="profile.html" class="card">
+<div class="icon">👤</div>
+<h3>Profile</h3>
+</a>
+
+</div>
+
+<a class="logout" href="login.html">🚪 Logout</a>
+
+</body>
+</html>
