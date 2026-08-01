@@ -100,3 +100,29 @@ setTimeout(function () {
     }
 
 }, 5000);
+
+// ==========================
+// Live Market Prices
+// ==========================
+
+function loadMarketPrices() {
+    const state = document.getElementById("state").value;
+    const result = document.getElementById("market-results");
+
+    if (state === "") {
+        result.innerHTML = "<p>Please select a State.</p>";
+        return;
+    }
+
+    result.innerHTML = `
+        <div class="market-card">
+            <h3>${state}</h3>
+            <p>🌾 Tomato : ₹28/kg</p>
+            <p>🥔 Potato : ₹24/kg</p>
+            <p>🧅 Onion : ₹30/kg</p>
+            <p>🌽 Maize : ₹22/kg</p>
+            <p>🌾 Rice : ₹45/kg</p>
+            <p>🌿 Cotton : ₹72/kg</p>
+        </div>
+    `;
+}
