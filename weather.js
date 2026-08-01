@@ -1,4 +1,4 @@
-const apiKey = ea240ac2886fec9b8ecede46af73a527
+const apiKey = "ea240ac2886fec9b8ecede46af73a527";
 
 function getWeather() {
     if (navigator.geolocation) {
