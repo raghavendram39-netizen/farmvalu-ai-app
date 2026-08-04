@@ -1,128 +1,394 @@
-// ==========================
-// FarmValu AI - Market Page
-// ==========================
+// ====================================
+// FarmValu AI - Market Database
+// Part 1
+// ====================================
 
-// Search Crops
-const search = document.getElementById("search");
+const marketData = {
 
-if (search) {
-    search.addEventListener("keyup", function () {
-        let value = search.value.toLowerCase();
-        let cards = document.querySelectorAll(".crop-card");
+"Andhra Pradesh":[
+{crop:"Rice",category:"Cereal",price:"₹2450 / Quintal"},
+{crop:"Maize",category:"Cereal",price:"₹2300 / Quintal"},
+{crop:"Groundnut",category:"Oilseed",price:"₹6200 / Quintal"},
+{crop:"Cotton",category:"Fiber",price:"₹7200 / Quintal"},
+{crop:"Chilli",category:"Spice",price:"₹9500 / Quintal"},
+{crop:"Turmeric",category:"Spice",price:"₹8200 / Quintal"},
+{crop:"Banana",category:"Fruit",price:"₹2600 / Quintal"},
+{crop:"Mango",category:"Fruit",price:"₹4200 / Quintal"},
+{crop:"Tomato",category:"Vegetable",price:"₹1800 / Quintal"},
+{crop:"Onion",category:"Vegetable",price:"₹2200 / Quintal"}
+],
 
-        cards.forEach(card => {
-            let text = card.innerText.toLowerCase();
+"Arunachal Pradesh":[
+{crop:"Rice",category:"Cereal",price:"₹2500 / Quintal"},
+{crop:"Maize",category:"Cereal",price:"₹2300 / Quintal"},
+{crop:"Orange",category:"Fruit",price:"₹4800 / Quintal"},
+{crop:"Kiwi",category:"Fruit",price:"₹9000 / Quintal"},
+{crop:"Ginger",category:"Spice",price:"₹7600 / Quintal"},
+{crop:"Turmeric",category:"Spice",price:"₹8100 / Quintal"},
+{crop:"Cabbage",category:"Vegetable",price:"₹2000 / Quintal"},
+{crop:"Potato",category:"Vegetable",price:"₹2400 / Quintal"}
+],
 
-            if (text.includes(value)) {
-                card.style.display = "flex";
-            } else {
-                card.style.display = "none";
-            }
-        });
-    });
-}
+"Assam":[
+{crop:"Rice",category:"Cereal",price:"₹2500 / Quintal"},
+{crop:"Tea",category:"Plantation",price:"₹18000 / Quintal"},
+{crop:"Mustard",category:"Oilseed",price:"₹6500 / Quintal"},
+{crop:"Banana",category:"Fruit",price:"₹2600 / Quintal"},
+{crop:"Pineapple",category:"Fruit",price:"₹3400 / Quintal"},
+{crop:"Ginger",category:"Spice",price:"₹7400 / Quintal"},
+{crop:"Brinjal",category:"Vegetable",price:"₹2100 / Quintal"},
+{crop:"Cabbage",category:"Vegetable",price:"₹2000 / Quintal"}
+],
 
-// Category Buttons
-const buttons = document.querySelectorAll(".category-btn");
+"Bihar":[
+{crop:"Rice",category:"Cereal",price:"₹2450 / Quintal"},
+{crop:"Wheat",category:"Cereal",price:"₹2400 / Quintal"},
+{crop:"Maize",category:"Cereal",price:"₹2250 / Quintal"},
+{crop:"Litchi",category:"Fruit",price:"₹6200 / Quintal"},
+{crop:"Makhana",category:"Special Crop",price:"₹12000 / Quintal"},
+{crop:"Potato",category:"Vegetable",price:"₹2200 / Quintal"},
+{crop:"Onion",category:"Vegetable",price:"₹2300 / Quintal"},
+{crop:"Mustard",category:"Oilseed",price:"₹6400 / Quintal"}
+],"Chhattisgarh":[
+{crop:"Rice",category:"Cereal",price:"₹2500 / Quintal"},
+{crop:"Maize",category:"Cereal",price:"₹2200 / Quintal"},
+{crop:"Soybean",category:"Oilseed",price:"₹4800 / Quintal"},
+{crop:"Tomato",category:"Vegetable",price:"₹1800 / Quintal"},
+{crop:"Onion",category:"Vegetable",price:"₹2200 / Quintal"},
+{crop:"Brinjal",category:"Vegetable",price:"₹2100 / Quintal"},
+{crop:"Chilli",category:"Spice",price:"₹9000 / Quintal"},
+{crop:"Coriander",category:"Spice",price:"₹7800 / Quintal"}
+],
 
-buttons.forEach(button => {
+"Goa":[
+{crop:"Rice",category:"Cereal",price:"₹2600 / Quintal"},
+{crop:"Coconut",category:"Plantation",price:"₹3200 / Quintal"},
+{crop:"Cashew",category:"Nut",price:"₹14000 / Quintal"},
+{crop:"Mango",category:"Fruit",price:"₹5000 / Quintal"},
+{crop:"Banana",category:"Fruit",price:"₹2800 / Quintal"},
+{crop:"Pineapple",category:"Fruit",price:"₹3500 / Quintal"},
+{crop:"Tomato",category:"Vegetable",price:"₹1900 / Quintal"},
+{crop:"Chilli",category:"Spice",price:"₹9200 / Quintal"}
+],
 
-    button.addEventListener("click", function () {
+"Gujarat":[
+{crop:"Cotton",category:"Fiber",price:"₹7400 / Quintal"},
+{crop:"Groundnut",category:"Oilseed",price:"₹6400 / Quintal"},
+{crop:"Wheat",category:"Cereal",price:"₹2450 / Quintal"},
+{crop:"Bajra",category:"Cereal",price:"₹2200 / Quintal"},
+{crop:"Cumin",category:"Spice",price:"₹16500 / Quintal"},
+{crop:"Onion",category:"Vegetable",price:"₹2400 / Quintal"},
+{crop:"Potato",category:"Vegetable",price:"₹2200 / Quintal"},
+{crop:"Banana",category:"Fruit",price:"₹3000 / Quintal"}
+],
 
-        buttons.forEach(btn => btn.classList.remove("active"));
+"Haryana":[
+{crop:"Wheat",category:"Cereal",price:"₹2500 / Quintal"},
+{crop:"Rice",category:"Cereal",price:"₹2450 / Quintal"},
+{crop:"Mustard",category:"Oilseed",price:"₹6500 / Quintal"},
+{crop:"Cotton",category:"Fiber",price:"₹7200 / Quintal"},
+{crop:"Potato",category:"Vegetable",price:"₹2200 / Quintal"},
+{crop:"Tomato",category:"Vegetable",price:"₹1800 / Quintal"},
+{crop:"Onion",category:"Vegetable",price:"₹2300 / Quintal"},
+{crop:"Cauliflower",category:"Vegetable",price:"₹2500 / Quintal"}
+],"Himachal Pradesh":[
+{crop:"Apple",category:"Fruit",price:"₹8000 / Quintal"},
+{crop:"Potato",category:"Vegetable",price:"₹2500 / Quintal"},
+{crop:"Maize",category:"Cereal",price:"₹2300 / Quintal"},
+{crop:"Peas",category:"Vegetable",price:"₹3200 / Quintal"},
+{crop:"Cauliflower",category:"Vegetable",price:"₹2600 / Quintal"},
+{crop:"Cabbage",category:"Vegetable",price:"₹2100 / Quintal"},
+{crop:"Ginger",category:"Spice",price:"₹7600 / Quintal"},
+{crop:"Garlic",category:"Spice",price:"₹9200 / Quintal"}
+],
 
-        this.classList.add("active");
+"Jharkhand":[
+{crop:"Rice",category:"Cereal",price:"₹2450 / Quintal"},
+{crop:"Maize",category:"Cereal",price:"₹2250 / Quintal"},
+{crop:"Tomato",category:"Vegetable",price:"₹1900 / Quintal"},
+{crop:"Potato",category:"Vegetable",price:"₹2200 / Quintal"},
+{crop:"Onion",category:"Vegetable",price:"₹2300 / Quintal"},
+{crop:"Brinjal",category:"Vegetable",price:"₹2100 / Quintal"},
+{crop:"Mustard",category:"Oilseed",price:"₹6300 / Quintal"},
+{crop:"Turmeric",category:"Spice",price:"₹8100 / Quintal"}
+],
 
-        let category = this.dataset.category;
+"Karnataka":[
+{crop:"Ragi",category:"Cereal",price:"₹4200 / Quintal"},
+{crop:"Rice",category:"Cereal",price:"₹2500 / Quintal"},
+{crop:"Maize",category:"Cereal",price:"₹2300 / Quintal"},
+{crop:"Coffee",category:"Plantation",price:"₹25000 / Quintal"},
+{crop:"Pepper",category:"Spice",price:"₹62000 / Quintal"},
+{crop:"Arecanut",category:"Plantation",price:"₹52000 / Quintal"},
+{crop:"Tomato",category:"Vegetable",price:"₹2000 / Quintal"},
+{crop:"Banana",category:"Fruit",price:"₹2800 / Quintal"}
+],
 
-        let cards = document.querySelectorAll(".crop-card");
+"Kerala":[
+{crop:"Coconut",category:"Plantation",price:"₹3200 / Quintal"},
+{crop:"Rubber",category:"Plantation",price:"₹18500 / Quintal"},
+{crop:"Pepper",category:"Spice",price:"₹62000 / Quintal"},
+{crop:"Cardamom",category:"Spice",price:"₹98000 / Quintal"},
+{crop:"Banana",category:"Fruit",price:"₹3000 / Quintal"},
+{crop:"Pineapple",category:"Fruit",price:"₹3600 / Quintal"},
+{crop:"Ginger",category:"Spice",price:"₹7600 / Quintal"},
+{crop:"Turmeric",category:"Spice",price:"₹8200 / Quintal"}
+],"Madhya Pradesh":[
+{crop:"Wheat",category:"Cereal",price:"₹2450 / Quintal"},
+{crop:"Soybean",category:"Oilseed",price:"₹5000 / Quintal"},
+{crop:"Gram",category:"Pulse",price:"₹5600 / Quintal"},
+{crop:"Garlic",category:"Spice",price:"₹9500 / Quintal"},
+{crop:"Onion",category:"Vegetable",price:"₹2300 / Quintal"},
+{crop:"Tomato",category:"Vegetable",price:"₹1900 / Quintal"},
+{crop:"Orange",category:"Fruit",price:"₹4500 / Quintal"},
+{crop:"Banana",category:"Fruit",price:"₹2800 / Quintal"}
+],
 
-        cards.forEach(card => {
+"Maharashtra":[
+{crop:"Cotton",category:"Fiber",price:"₹7300 / Quintal"},
+{crop:"Soybean",category:"Oilseed",price:"₹5100 / Quintal"},
+{crop:"Sugarcane",category:"Cash Crop",price:"₹340 / Quintal"},
+{crop:"Grapes",category:"Fruit",price:"₹6500 / Quintal"},
+{crop:"Pomegranate",category:"Fruit",price:"₹8500 / Quintal"},
+{crop:"Onion",category:"Vegetable",price:"₹2500 / Quintal"},
+{crop:"Tomato",category:"Vegetable",price:"₹2000 / Quintal"},
+{crop:"Turmeric",category:"Spice",price:"₹8300 / Quintal"}
+],
 
-            if (category === "all") {
+"Manipur":[
+{crop:"Rice",category:"Cereal",price:"₹2550 / Quintal"},
+{crop:"Maize",category:"Cereal",price:"₹2300 / Quintal"},
+{crop:"Ginger",category:"Spice",price:"₹7600 / Quintal"},
+{crop:"Turmeric",category:"Spice",price:"₹8200 / Quintal"},
+{crop:"Pineapple",category:"Fruit",price:"₹3500 / Quintal"},
+{crop:"Banana",category:"Fruit",price:"₹2800 / Quintal"},
+{crop:"Cabbage",category:"Vegetable",price:"₹2200 / Quintal"},
+{crop:"Chilli",category:"Spice",price:"₹9200 / Quintal"}
+],
 
-                card.style.display = "flex";
+"Meghalaya":[
+{crop:"Rice",category:"Cereal",price:"₹2500 / Quintal"},
+{crop:"Potato",category:"Vegetable",price:"₹2400 / Quintal"},
+{crop:"Ginger",category:"Spice",price:"₹7700 / Quintal"},
+{crop:"Turmeric",category:"Spice",price:"₹8100 / Quintal"},
+{crop:"Orange",category:"Fruit",price:"₹4800 / Quintal"},
+{crop:"Pineapple",category:"Fruit",price:"₹3600 / Quintal"},
+{crop:"Cabbage",category:"Vegetable",price:"₹2100 / Quintal"},
+{crop:"Tomato",category:"Vegetable",price:"₹2000 / Quintal"}
+],"Mizoram":[
+{crop:"Rice",category:"Cereal",price:"₹2600 / Quintal"},
+{crop:"Maize",category:"Cereal",price:"₹2350 / Quintal"},
+{crop:"Orange",category:"Fruit",price:"₹5000 / Quintal"},
+{crop:"Banana",category:"Fruit",price:"₹2900 / Quintal"},
+{crop:"Pineapple",category:"Fruit",price:"₹3700 / Quintal"},
+{crop:"Ginger",category:"Spice",price:"₹7800 / Quintal"},
+{crop:"Turmeric",category:"Spice",price:"₹8400 / Quintal"},
+{crop:"Cabbage",category:"Vegetable",price:"₹2200 / Quintal"}
+],
 
-            } else {
+"Nagaland":[
+{crop:"Rice",category:"Cereal",price:"₹2550 / Quintal"},
+{crop:"Maize",category:"Cereal",price:"₹2300 / Quintal"},
+{crop:"Potato",category:"Vegetable",price:"₹2400 / Quintal"},
+{crop:"Tomato",category:"Vegetable",price:"₹2000 / Quintal"},
+{crop:"Naga Chilli",category:"Spice",price:"₹25000 / Quintal"},
+{crop:"Ginger",category:"Spice",price:"₹7600 / Quintal"},
+{crop:"Orange",category:"Fruit",price:"₹4900 / Quintal"},
+{crop:"Pineapple",category:"Fruit",price:"₹3600 / Quintal"}
+],
 
-                if (card.dataset.category === category) {
+"Odisha":[
+{crop:"Rice",category:"Cereal",price:"₹2450 / Quintal"},
+{crop:"Groundnut",category:"Oilseed",price:"₹6200 / Quintal"},
+{crop:"Cotton",category:"Fiber",price:"₹7100 / Quintal"},
+{crop:"Turmeric",category:"Spice",price:"₹8200 / Quintal"},
+{crop:"Banana",category:"Fruit",price:"₹2700 / Quintal"},
+{crop:"Mango",category:"Fruit",price:"₹4300 / Quintal"},
+{crop:"Tomato",category:"Vegetable",price:"₹1800 / Quintal"},
+{crop:"Brinjal",category:"Vegetable",price:"₹2100 / Quintal"}
+],
 
-                    card.style.display = "flex";
+"Punjab":[
+{crop:"Wheat",category:"Cereal",price:"₹2500 / Quintal"},
+{crop:"Rice",category:"Cereal",price:"₹2450 / Quintal"},
+{crop:"Maize",category:"Cereal",price:"₹2250 / Quintal"},
+{crop:"Cotton",category:"Fiber",price:"₹7200 / Quintal"},
+{crop:"Mustard",category:"Oilseed",price:"₹6500 / Quintal"},
+{crop:"Potato",category:"Vegetable",price:"₹2300 / Quintal"},
+{crop:"Onion",category:"Vegetable",price:"₹2400 / Quintal"},
+{crop:"Cauliflower",category:"Vegetable",price:"₹2600 / Quintal"}
+],"Rajasthan":[
+{crop:"Wheat",category:"Cereal",price:"₹2500 / Quintal"},
+{crop:"Mustard",category:"Oilseed",price:"₹6700 / Quintal"},
+{crop:"Bajra",category:"Cereal",price:"₹2300 / Quintal"},
+{crop:"Gram",category:"Pulse",price:"₹5800 / Quintal"},
+{crop:"Cumin",category:"Spice",price:"₹17000 / Quintal"},
+{crop:"Guar",category:"Cash Crop",price:"₹6200 / Quintal"},
+{crop:"Onion",category:"Vegetable",price:"₹2400 / Quintal"},
+{crop:"Tomato",category:"Vegetable",price:"₹1900 / Quintal"}
+],
 
-                } else {
+"Sikkim":[
+{crop:"Large Cardamom",category:"Spice",price:"₹85000 / Quintal"},
+{crop:"Ginger",category:"Spice",price:"₹7800 / Quintal"},
+{crop:"Maize",category:"Cereal",price:"₹2400 / Quintal"},
+{crop:"Rice",category:"Cereal",price:"₹2600 / Quintal"},
+{crop:"Potato",category:"Vegetable",price:"₹2500 / Quintal"},
+{crop:"Orange",category:"Fruit",price:"₹5200 / Quintal"},
+{crop:"Cabbage",category:"Vegetable",price:"₹2200 / Quintal"},
+{crop:"Tomato",category:"Vegetable",price:"₹2100 / Quintal"}
+],
 
-                    card.style.display = "none";
+"Tamil Nadu":[
+{crop:"Rice",category:"Cereal",price:"₹2500 / Quintal"},
+{crop:"Sugarcane",category:"Cash Crop",price:"₹350 / Quintal"},
+{crop:"Banana",category:"Fruit",price:"₹3000 / Quintal"},
+{crop:"Coconut",category:"Plantation",price:"₹3300 / Quintal"},
+{crop:"Turmeric",category:"Spice",price:"₹8400 / Quintal"},
+{crop:"Cotton",category:"Fiber",price:"₹7200 / Quintal"},
+{crop:"Tomato",category:"Vegetable",price:"₹2000 / Quintal"},
+{crop:"Onion",category:"Vegetable",price:"₹2300 / Quintal"}
+],
 
-                }
+"Telangana":[
+{crop:"Rice",category:"Cereal",price:"₹2480 / Quintal"},
+{crop:"Cotton",category:"Fiber",price:"₹7250 / Quintal"},
+{crop:"Maize",category:"Cereal",price:"₹2300 / Quintal"},
+{crop:"Chilli",category:"Spice",price:"₹9800 / Quintal"},
+{crop:"Turmeric",category:"Spice",price:"₹8300 / Quintal"},
+{crop:"Mango",category:"Fruit",price:"₹4500 / Quintal"},
+{crop:"Tomato",category:"Vegetable",price:"₹1900 / Quintal"},
+{crop:"Onion",category:"Vegetable",price:"₹2200 / Quintal"}
+],"Tripura":[
+{crop:"Rice",category:"Cereal",price:"₹2500 / Quintal"},
+{crop:"Rubber",category:"Plantation",price:"₹18000 / Quintal"},
+{crop:"Pineapple",category:"Fruit",price:"₹3600 / Quintal"},
+{crop:"Jackfruit",category:"Fruit",price:"₹2800 / Quintal"},
+{crop:"Banana",category:"Fruit",price:"₹2900 / Quintal"},
+{crop:"Ginger",category:"Spice",price:"₹7700 / Quintal"},
+{crop:"Turmeric",category:"Spice",price:"₹8200 / Quintal"},
+{crop:"Cabbage",category:"Vegetable",price:"₹2200 / Quintal"}
+],
 
-            }
+"Uttar Pradesh":[
+{crop:"Wheat",category:"Cereal",price:"₹2450 / Quintal"},
+{crop:"Rice",category:"Cereal",price:"₹2400 / Quintal"},
+{crop:"Sugarcane",category:"Cash Crop",price:"₹340 / Quintal"},
+{crop:"Potato",category:"Vegetable",price:"₹2200 / Quintal"},
+{crop:"Tomato",category:"Vegetable",price:"₹1900 / Quintal"},
+{crop:"Onion",category:"Vegetable",price:"₹2300 / Quintal"},
+{crop:"Mango",category:"Fruit",price:"₹4500 / Quintal"},
+{crop:"Guava",category:"Fruit",price:"₹3500 / Quintal"}
+],
 
-        });
+"Uttarakhand":[
+{crop:"Rice",category:"Cereal",price:"₹2550 / Quintal"},
+{crop:"Wheat",category:"Cereal",price:"₹2500 / Quintal"},
+{crop:"Apple",category:"Fruit",price:"₹8200 / Quintal"},
+{crop:"Litchi",category:"Fruit",price:"₹6400 / Quintal"},
+{crop:"Potato",category:"Vegetable",price:"₹2400 / Quintal"},
+{crop:"Tomato",category:"Vegetable",price:"₹2000 / Quintal"},
+{crop:"Ginger",category:"Spice",price:"₹7800 / Quintal"},
+{crop:"Turmeric",category:"Spice",price:"₹8300 / Quintal"}
+],
 
-    });
+"West Bengal":[
+{crop:"Rice",category:"Cereal",price:"₹2450 / Quintal"},
+{crop:"Jute",category:"Fiber",price:"₹5200 / Quintal"},
+{crop:"Tea",category:"Plantation",price:"₹18500 / Quintal"},
+{crop:"Potato",category:"Vegetable",price:"₹2200 / Quintal"},
+{crop:"Tomato",category:"Vegetable",price:"₹1800 / Quintal"},
+{crop:"Banana",category:"Fruit",price:"₹2800 / Quintal"},
+{crop:"Mango",category:"Fruit",price:"₹4300 / Quintal"},
+{crop:"Pineapple",category:"Fruit",price:"₹3500 / Quintal"}
+],"Andaman and Nicobar Islands":[
+{crop:"Coconut",category:"Plantation",price:"₹3400 / Quintal"},
+{crop:"Banana",category:"Fruit",price:"₹3000 / Quintal"},
+{crop:"Arecanut",category:"Plantation",price:"₹5300 / Quintal"}
+],
 
-});
+"Chandigarh":[
+{crop:"Wheat",category:"Cereal",price:"₹2500 / Quintal"},
+{crop:"Rice",category:"Cereal",price:"₹2450 / Quintal"},
+{crop:"Tomato",category:"Vegetable",price:"₹2000 / Quintal"}
+],
 
-// Crop Click
-const crops = document.querySelectorAll(".crop-card");
+"Dadra and Nagar Haveli and Daman and Diu":[
+{crop:"Rice",category:"Cereal",price:"₹2450 / Quintal"},
+{crop:"Sugarcane",category:"Cash Crop",price:"₹340 / Quintal"},
+{crop:"Banana",category:"Fruit",price:"₹2900 / Quintal"}
+],
 
-crops.forEach(crop => {
+"Delhi":[
+{crop:"Wheat",category:"Cereal",price:"₹2500 / Quintal"},
+{crop:"Onion",category:"Vegetable",price:"₹2400 / Quintal"},
+{crop:"Tomato",category:"Vegetable",price:"₹2000 / Quintal"}
+],
 
-    crop.addEventListener("click", function () {
+"Jammu and Kashmir":[
+{crop:"Apple",category:"Fruit",price:"₹9000 / Quintal"},
+{crop:"Walnut",category:"Nut",price:"₹18000 / Quintal"},
+{crop:"Saffron",category:"Spice",price:"₹350000 / Quintal"},
+{crop:"Rice",category:"Cereal",price:"₹2600 / Quintal"}
+],
 
-        let cropName = this.querySelector("h3").innerText;
+"Ladakh":[
+{crop:"Barley",category:"Cereal",price:"₹2800 / Quintal"},
+{crop:"Apricot",category:"Fruit",price:"₹7000 / Quintal"},
+{crop:"Apple",category:"Fruit",price:"₹8500 / Quintal"}
+],
 
-        alert(
-            "📈 " +
-            cropName +
-            "\n\nToday's Price : ₹25 - ₹40/kg\n\nAI Prediction : Price may increase tomorrow."
-        );
+"Lakshadweep":[
+{crop:"Coconut",category:"Plantation",price:"₹3500 / Quintal"},
+{crop:"Banana",category:"Fruit",price:"₹3000 / Quintal"},
+{crop:"Breadfruit",category:"Fruit",price:"₹3200 / Quintal"}
+],
 
-    });
-
-});
-
-// Banner Advertisement
-setTimeout(function () {
-
-    let ad = document.getElementById("marketAd");
-
-    if (ad) {
-
-        ad.style.display = "block";
-
-        setTimeout(function () {
-
-            ad.style.display = "none";
-
-        }, 15000);
-
-    }
-
-}, 5000);
-
-// ==========================
-// Live Market Prices
-// ==========================
-
+"Puducherry":[
+{crop:"Rice",category:"Cereal",price:"₹2500 / Quintal"},
+{crop:"Sugarcane",category:"Cash Crop",price:"₹350 / Quintal"},
+{crop:"Coconut",category:"Plantation",price:"₹3300 / Quintal"},
+{crop:"Banana",category:"Fruit",price:"₹3000 / Quintal"}
+]
+};
 function loadMarketPrices() {
-    const state = document.getElementById("state").value;
-    const result = document.getElementById("market-results");
 
-    if (state === "") {
-        result.innerHTML = "<p>Please select a State.</p>";
+    const state = document.getElementById("state").value;
+    const results = document.getElementById("market-results");
+
+    if (!state) {
+        results.innerHTML = "<h3>Please select a State.</h3>";
         return;
     }
 
-    result.innerHTML = `
-        <div class="market-card">
-            <h3>${state}</h3>
-            <p>🌾 Tomato : ₹28/kg</p>
-            <p>🥔 Potato : ₹24/kg</p>
-            <p>🧅 Onion : ₹30/kg</p>
-            <p>🌽 Maize : ₹22/kg</p>
-            <p>🌾 Rice : ₹45/kg</p>
-            <p>🌿 Cotton : ₹72/kg</p>
-        </div>
+    const crops = marketData[state];
+
+    if (!crops) {
+        results.innerHTML = "<h3>No market data available for this State.</h3>";
+        return;
+    }
+
+    let html = `
+        <h2>${state} Market Prices</h2>
+        <table style="width:100%;border-collapse:collapse;">
+            <tr style="background:#2e7d32;color:white;">
+                <th style="padding:10px;border:1px solid #ddd;">Crop</th>
+                <th style="padding:10px;border:1px solid #ddd;">Category</th>
+                <th style="padding:10px;border:1px solid #ddd;">Price</th>
+            </tr>
     `;
+
+    crops.forEach(crop => {
+        html += `
+            <tr>
+                <td style="padding:10px;border:1px solid #ddd;">${crop.crop}</td>
+                <td style="padding:10px;border:1px solid #ddd;">${crop.category}</td>
+                <td style="padding:10px;border:1px solid #ddd;">${crop.price}</td>
+            </tr>
+        `;
+    });
+
+    html += "</table>";
+
+    results.innerHTML = html;
 }
