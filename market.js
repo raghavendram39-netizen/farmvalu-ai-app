@@ -350,41 +350,44 @@ const marketData = {
 {crop:"Coconut",category:"Plantation",price:"₹3300 / Quintal"},
 {crop:"Banana",category:"Fruit",price:"₹3000 / Quintal"}
 ]
-};
-function loadMarketPrices() {
-
+    function showCategory(category) {
     const state = document.getElementById("state").value;
     const results = document.getElementById("market-results");
 
     if (!state) {
-        results.innerHTML = "<h3>Please select a State.</h3>";
+        alert("Please select a state first.");
         return;
     }
 
     const crops = marketData[state];
 
-    if (!crops) {
-        results.innerHTML = "<h3>No market data available for this State.</h3>";
-        return;
-    }
+    const filtered = crops.filter(crop => {
+        if (category === "Vegetables") return crop.category === "Vegetable";
+        if (category === "Fruits") return crop.category === "Fruit";
+        if (category === "Cereals") return crop.category === "Cereal";
+        if (category === "Pulses") return crop.category === "Pulse";
+        if (category === "Spices") return crop.category === "Spice";
+        if (category === "Flowers") return crop.category === "Flower";
+        return true;
+    });
 
     let html = `
-        <h2>${state} Market Prices</h2>
+        <h2>${state} - ${category}</h2>
         <table style="width:100%;border-collapse:collapse;">
-            <tr style="background:#2e7d32;color:white;">
-                <th style="padding:10px;border:1px solid #ddd;">Crop</th>
-                <th style="padding:10px;border:1px solid #ddd;">Category</th>
-                <th style="padding:10px;border:1px solid #ddd;">Price</th>
-            </tr>
+        <tr style="background:#2e7d32;color:white;">
+            <th>Crop</th>
+            <th>Category</th>
+            <th>Price</th>
+        </tr>
     `;
 
-    crops.forEach(crop => {
+    filtered.forEach(crop => {
         html += `
-            <tr>
-                <td style="padding:10px;border:1px solid #ddd;">${crop.crop}</td>
-                <td style="padding:10px;border:1px solid #ddd;">${crop.category}</td>
-                <td style="padding:10px;border:1px solid #ddd;">${crop.price}</td>
-            </tr>
+        <tr>
+            <td>${crop.crop}</td>
+            <td>${crop.category}</td>
+            <td>${crop.price}</td>
+        </tr>
         `;
     });
 
