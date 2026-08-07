@@ -395,3 +395,19 @@ const marketData = {
 
     results.innerHTML = html;
 }
+function searchCrop() {
+    const input = document.getElementById("searchCrop").value.toLowerCase();
+    const rows = document.querySelectorAll("#market-results table tr");
+
+    rows.forEach((row, index) => {
+        if (index === 0) return; // Keep table header visible
+
+        const crop = row.cells[0].textContent.toLowerCase();
+
+        if (crop.includes(input)) {
+            row.style.display = "";
+        } else {
+            row.style.display = "none";
+        }
+    });
+}
