@@ -410,4 +410,84 @@ function searchCrop() {
             row.style.display = "none";
         }
     });
+}.
+
+// ===============================
+// LIVE AGMARKNET API SETTINGS
+// ===============================
+
+const API_KEY = "579b464db66ec23bdd0000014be91ebeeac2474d65945d612cf82e92";
+
+const API_URL =
+"https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070";
+
+async function fetchLiveMarketPrices(state = "", commodity = "") {
+
+    let url =
+        `${API_URL}?api-key=${API_KEY}&format=json&limit=100`;
+
+    if (state) {
+        url += `&filters[state]=${encodeURIComponent(state)}`;
+    }
+
+    if (commodity) {
+        url += `&filters[commodity]=${encodeURIComponent(commodity)}`;
+    }
+
+    try {
+
+        const response = await fetch(url);
+
+        const data = await response.json();
+
+        console.log(data);
+
+        return data.records || [];
+
+    } catch (error) {
+
+        console.error("API Error:", error);
+
+        return [];
+
+    }
+}async function loadLiveMarketPrices() {
+
+    const state = document.getElementById("state").value;
+
+    const results = document.getElementById("market-results");
+
+    results.innerHTML = "<h3>Loading live market prices...</h3>";
+
+    const records = await fetchLiveMarketPrices(state);
+
+    if (!records.length) {
+        results.innerHTML = "<h3>No live market data found.</h3>";
+        return;
+    }
+
+    let html = `
+        <table style="width:100%;border-collapse:collapse;">
+            <tr style="background:#2e7d32;color:white;">
+                <th>Commodity</th>
+                <th>Market</th>
+                <th>State</th>
+                <th>Price (₹/Quintal)</th>
+            </tr>
+    `;
+
+    records.forEach(item => {
+        html += `
+            <tr>
+                <td>${item.commodity}</td>
+                <td>${item.market}</td>
+                <td>${item.state}</td>
+                <td>${item.modal_price}</td>
+            </tr>
+        `;
+    });
+
+    html += "</table>";
+
+    results.innerHTML = html;
 }
