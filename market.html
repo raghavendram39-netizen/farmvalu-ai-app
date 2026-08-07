@@ -59,21 +59,25 @@
 <option>Ladakh</option>
 <option>Lakshadweep</option>
 <option>Puducherry</option>
-
 </select>
+
+<input
+    type="text"
+    id="searchCrop"
+    placeholder="🔍 Search crop..."
+    onkeyup="searchCrop()"
+    style="width:100%;padding:12px;margin-bottom:15px;border:1px solid #ccc;border-radius:8px;">
 
 <br><br>
 
 <button onclick="loadMarketPrices()">
-Show Market Prices
+    Show Market Prices
 </button>
 
 <hr>
-
-<h2>Crop Categories</h2>
-
+    
 <div class="category-grid">
-
+    
 <button onclick="showCategory('Vegetables')">🥬 Vegetables</button>
 
 <button onclick="showCategory('Fruits')">🍎 Fruits</button>
