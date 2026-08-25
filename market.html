@@ -110,6 +110,18 @@
 </footer>
 
 <script src="market.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const button = document.querySelector(
+        'button[onclick="loadLiveMarketPrices()"]'
+    );
 
+    if (button) {
+        button.onclick = function () {
+            alert("Button is working!");
+        };
+    }
+});
+</script>
 </body>
 </html>
