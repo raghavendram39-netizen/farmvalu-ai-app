@@ -409,86 +409,395 @@ function searchCrop() {
         } else {
             row.style.display = "none";
         }
-    });
-}.
+    }):
+    // ==========================================
+// LIVE AGMARKNET / DATA.GOV.IN MARKET API
+// ==========================================
 
-// ===============================
-// LIVE AGMARKNET API SETTINGS
-// ===============================
-
-const API_KEY = "579b464db66ec23bdd0000014be91ebeeac2474d65945d612cf82e92";
+// IMPORTANT:
+// Replace this with your NEW API key.
+// Do NOT use the old key that was visible in screenshots.
+const API_KEY = "579b464db66ec23bdd00000110f2ef7e2460447a73f96b000bd1f535";
 
 const API_URL =
-"https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070";
+    "https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070";
+
+
+// ==========================================
+// FETCH LIVE MARKET PRICES
+// ==========================================
 
 async function fetchLiveMarketPrices(state = "", commodity = "") {
 
-    let url =
-        `${API_URL}?api-key=${API_KEY}&format=json&limit=100`;
-
-    if (state) {
-        url += `&filters[state]=${encodeURIComponent(state)}`;
-    }
-
-    if (commodity) {
-        url += `&filters[commodity]=${encodeURIComponent(commodity)}`;
-    }
-
     try {
+
+        const params = new URLSearchParams();
+
+        params.set("api-key", API_KEY);
+        params.set("format", "json");
+        params.set("limit", "100");
+
+        // State filter
+        if (state) {
+            params.set("filters[state]", state);
+        }
+
+        // Commodity filter
+        if (commodity) {
+            params.set("filters[commodity]", commodity);
+        }
+
+        const url = `${API_URL}?${params.toString()}`;
+
+        console.log("Live Market API:", url);
 
         const response = await fetch(url);
 
+        if (!response.ok) {
+            throw new Error(
+                `API request failed: ${response.status}`
+            );
+        }
+
         const data = await response.json();
 
-        console.log(data);
+        console.log("Live Market Data:", data);
 
         return data.records || [];
 
     } catch (error) {
 
-        console.error("API Error:", error);
+        console.error("Live Market API Error:", error);
 
         return [];
-
     }
-async function loadLiveMarketPrices() {
-    alert("Market button is working!");
-    
-    const state = document.getElementById("state").value;
+}
 
+
+// ==========================================
+// LOAD LIVE MARKET PRICES
+// ==========================================
+
+async function loadLiveMarketPrices() {
+
+    const stateElement = document.getElementById("state");
     const results = document.getElementById("market-results");
 
-    results.innerHTML = "<h3>Loading live market prices...</h3>";
-
-    const records = await fetchLiveMarketPrices(state);
-
-    if (!records.length) {
-        results.innerHTML = "<h3>No live market data found.</h3>";
+    if (!stateElement || !results) {
+        console.error(
+            "State selector or market-results element was not found."
+        );
         return;
     }
 
+    const state = stateElement.value;
+
+    if (!state) {
+
+        alert("Please select a state first.");
+
+        return;
+    }
+
+    // Show loading message
+    results.innerHTML = `
+        <h3>Loading live market prices...</h3>
+        <p>Please wait...</p>
+    `;
+
+
+    // Fetch live data
+    const records = await fetchLiveMarketPrices(state);
+
+
+    // No data
+    if (!records.length) {
+
+        results.innerHTML = `
+            <h3>No live market data found.</h3>
+            <p>
+                The government API did not return market
+                prices for the selected state.
+            </p>
+        `;
+
+        return;
+    }
+
+
+    // ==========================================
+    // CREATE TABLE
+    // ==========================================
+
     let html = `
-        <table style="width:100%;border-collapse:collapse;">
-            <tr style="background:#2e7d32;color:white;">
-                <th>Commodity</th>
-                <th>Market</th>
-                <th>State</th>
-                <th>Price (₹/Quintal)</th>
+
+        <h2>Live Market Prices - ${state}</h2>
+
+        <div style="overflow-x:auto;">
+
+        <table
+            style="
+                width:100%;
+                border-collapse:collapse;
+                margin-top:15px;
+            "
+        >
+
+            <tr
+                style="
+                    background:#2e7d32;
+                    color:white;
+                "
+            >
+
+                <th style="padding:10px;">
+                    Commodity
+                </th>
+
+                <th style="padding:10px;">
+                    Market
+                </th>
+
+                <th style="padding:10px;">
+                    State
+                </th>
+
+                <th style="padding:10px;">
+                    Min Price
+                </th>
+
+                <th style="padding:10px;">
+                    Max Price
+                </th>
+
+                <th style="padding:10px;">
+                    Modal Price
+                </th>
+
             </tr>
     `;
 
+
+    // ==========================================
+    // ADD RECORDS
+    // ==========================================
+
     records.forEach(item => {
+
         html += `
+
             <tr>
-                <td>${item.commodity}</td>
-                <td>${item.market}</td>
-                <td>${item.state}</td>
-                <td>${item.modal_price}</td>
+
+                <td style="padding:8px;border:1px solid #ddd;">
+                    ${item.commodity || "N/A"}
+                </td>
+
+                <td style="padding:8px;border:1px solid #ddd;">
+                    ${item.market || "N/A"}
+                </td>
+
+                <td style="padding:8px;border:1px solid #ddd;">
+                    ${item.state || state}
+                </td>
+
+                <td style="padding:8px;border:1px solid #ddd;">
+                    ₹${item.min_price || "N/A"}
+                </td>
+
+                <td style="padding:8px;border:1px solid #ddd;">
+                    ₹${item.max_price || "N/A"}
+                </td>
+
+                <td style="padding:8px;border:1px solid #ddd;">
+                    ₹${item.modal_price || "N/A"}
+                </td>
+
             </tr>
+
         `;
     });
 
-    html += "</table>";
+
+    html += `
+
+        </table>
+
+        </div>
+
+        <p
+            style="
+                margin-top:10px;
+                font-size:13px;
+                color:#666;
+            "
+        >
+            Source: Government of India -
+            Data.gov.in / Agmarknet
+        </p>
+
+    `;
+
 
     results.innerHTML = html;
 }
+
+
+// ==========================================
+// OPTIONAL COMMODITY SEARCH
+// ==========================================
+
+async function loadLiveMarketByCommodity() {
+
+    const stateElement = document.getElementById("state");
+    const searchElement = document.getElementById("searchCrop");
+    const results = document.getElementById("market-results");
+
+    if (!stateElement || !results) {
+        return;
+    }
+
+    const state = stateElement.value;
+
+    const commodity =
+        searchElement
+            ? searchElement.value.trim()
+            : "";
+
+
+    if (!state) {
+
+        alert("Please select a state first.");
+
+        return;
+    }
+
+
+    results.innerHTML = `
+        <h3>Loading live market prices...</h3>
+    `;
+
+
+    const records =
+        await fetchLiveMarketPrices(
+            state,
+            commodity
+        );
+
+
+    if (!records.length) {
+
+        results.innerHTML = `
+            <h3>No live market data found.</h3>
+            <p>
+                Try another commodity or state.
+            </p>
+        `;
+
+        return;
+    }
+
+
+    let html = `
+
+        <h2>
+            ${commodity
+                ? commodity + " - "
+                : ""
+            }Live Market Prices
+        </h2>
+
+        <div style="overflow-x:auto;">
+
+        <table
+            style="
+                width:100%;
+                border-collapse:collapse;
+            "
+        >
+
+            <tr
+                style="
+                    background:#2e7d32;
+                    color:white;
+                "
+            >
+
+                <th style="padding:10px;">
+                    Commodity
+                </th>
+
+                <th style="padding:10px;">
+                    Market
+                </th>
+
+                <th style="padding:10px;">
+                    State
+                </th>
+
+                <th style="padding:10px;">
+                    Min Price
+                </th>
+
+                <th style="padding:10px;">
+                    Max Price
+                </th>
+
+                <th style="padding:10px;">
+                    Modal Price
+                </th>
+
+            </tr>
+    `;
+
+
+    records.forEach(item => {
+
+        html += `
+
+            <tr>
+
+                <td style="padding:8px;border:1px solid #ddd;">
+                    ${item.commodity || "N/A"}
+                </td>
+
+                <td style="padding:8px;border:1px solid #ddd;">
+                    ${item.market || "N/A"}
+                </td>
+
+                <td style="padding:8px;border:1px solid #ddd;">
+                    ${item.state || state}
+                </td>
+
+                <td style="padding:8px;border:1px solid #ddd;">
+                    ₹${item.min_price || "N/A"}
+                </td>
+
+                <td style="padding:8px;border:1px solid #ddd;">
+                    ₹${item.max_price || "N/A"}
+                </td>
+
+                <td style="padding:8px;border:1px solid #ddd;">
+                    ₹${item.modal_price || "N/A"}
+                </td>
+
+            </tr>
+
+        `;
+    });
+
+
+    html += `
+
+        </table>
+
+        </div>
+    `;
+
+
+    results.innerHTML = html;
+}
+
+
+// ==========================================
+// END OF LIVE MARKET API
+// ==========================================
