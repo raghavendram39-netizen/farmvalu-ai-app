@@ -478,7 +478,8 @@ async function fetchLiveMarketPrices(state = "", commodity = "") {
 // LOAD LIVE MARKET PRICES
 // ==========================================
 
-alert("Show Market Prices function is working!");
+async function loadLiveMarketPrices() {
+    alert("Button is working!");
 
     const stateElement = document.getElementById("state");
     const results = document.getElementById("market-results");
