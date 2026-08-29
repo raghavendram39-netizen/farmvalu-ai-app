@@ -413,10 +413,7 @@ function searchCrop() {
     // ==========================================
 // LIVE AGMARKNET / DATA.GOV.IN MARKET API
 // ==========================================
-
-// IMPORTANT:
-// Replace this with your NEW API key.
-// Do NOT use the old key that was visible in screenshots.
+    
 const API_KEY = "579b464db66ec23bdd00000110f2ef7e2460447a73f96b000bd1f535";
 
 const API_URL =
