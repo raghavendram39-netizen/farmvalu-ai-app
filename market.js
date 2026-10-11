@@ -434,9 +434,9 @@ async function fetchLiveMarketPrices(state = "", commodity = "") {
         params.set("format", "json");
         params.set("limit", "100");
 
-        // State filter
         if (state) {
-            params.set("filters[state]", state);
+    params.set("filters[state.keyword]", state);
+        }
         }
 
         // Commodity filter
